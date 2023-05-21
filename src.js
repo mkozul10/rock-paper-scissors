@@ -40,3 +40,27 @@ function playRound(PlayerChoice,ComputerChoice){
             break;
     }
 }
+function game(){
+    let scorePlayer=0;
+    let scoreComputer=0;
+    let arr;
+    let result;
+    let winner;
+    for(let i=0;i<5;i++){
+        arr=playRound(getPlayerChoice(),getComputerChoice()).split(',');
+        result=arr[0];
+        if(result==='YOU WON') scorePlayer++;
+        else if(result==='YOU LOST') scoreComputer++;
+        else{
+            scorePlayer++;
+            scoreComputer++;
+        }
+        console.log(`Round ${i+1}:\nComputer: ${scoreComputer}\nYou: ${scorePlayer}`);
+    }
+    if(scoreComputer>scorePlayer) winner='Computer won';
+    else if(scorePlayer>scoreComputer) winner='You won';
+    else winner='Tied';
+    console.log(`Result is:\nYou: ${scorePlayer}\nComputer: ${scoreComputer}\nOverall result: ${winner}`);
+}
+game();
+
