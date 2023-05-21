@@ -3,6 +3,7 @@ const CHOICES=['rock','paper','scissors'];
 function getComputerChoice(){
     let choiceIndex=Math.floor(Math.random()*3);
     let choice=CHOICES[choiceIndex];
+    return choice;
 }
 function getPlayerChoice(){
     let check;
@@ -14,6 +15,7 @@ function getPlayerChoice(){
     }
     if(!check){
         alert('Invalid input, try again');
+        return;
     }
-    
+    return choice;
 }
