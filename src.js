@@ -6,18 +6,15 @@ function getComputerChoice(){
     return choice;
 }
 function getPlayerChoice(){
-    let check;
-    let choice=prompt('Enter rock, paper or scissors: ').toLowerCase();
-    for(let i=0;i<3;i++){
-        if(choice==CHOICES[i]){
-            check=true;
-        }
-    }
-    if(!check){
-        alert('Invalid input, try again');
-        return;
-    }
-    return choice;
+    var PlayerChoice;
+    const buttons=document.querySelectorAll('.button1');
+    buttons.forEach(button=>{
+        button.addEventListener('click',()=>{
+            PlayerChoice=button.getAttribute('data-option')
+            console.log(playRound(PlayerChoice,getComputerChoice()));
+        });
+    });
+
 }
 function playRound(PlayerChoice,ComputerChoice){
     switch(PlayerChoice){
@@ -43,24 +40,9 @@ function playRound(PlayerChoice,ComputerChoice){
 function game(){
     let scorePlayer=0;
     let scoreComputer=0;
-    let arr;
-    let result;
     let winner;
-    for(let i=0;i<5;i++){
-        arr=playRound(getPlayerChoice(),getComputerChoice()).split(',');
-        result=arr[0];
-        if(result==='YOU WON') scorePlayer++;
-        else if(result==='YOU LOST') scoreComputer++;
-        else{
-            scorePlayer++;
-            scoreComputer++;
-        }
-        console.log(`Round ${i+1}:\nComputer: ${scoreComputer}\nYou: ${scorePlayer}`);
-    }
-    if(scoreComputer>scorePlayer) winner='Computer won';
-    else if(scorePlayer>scoreComputer) winner='You won';
-    else winner='Tied';
-    console.log(`Result is:\nYou: ${scorePlayer}\nComputer: ${scoreComputer}\nOverall result: ${winner}`);
+
+
 }
-game();
+getPlayerChoice();
 
