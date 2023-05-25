@@ -1,0 +1,29 @@
+body,html {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+}
+
+#container{
+    display:flex;
+    gap:1.2rem;
+    justify-content: center;
+}
+.button1{
+    border-radius: 2px;
+    background-color: #AC87;
+    margin-top:1.2rem;
+}
+#result{
+    display:flex;
+    justify-content: center;
+    margin-top:3rem;
+    gap:1.3rem;
+}
+#winner{
+    display:flex;
+    justify-content: center;
+    margin-top:3rem;
+    color:red;
+    font-size: 1.2rem;
+}
