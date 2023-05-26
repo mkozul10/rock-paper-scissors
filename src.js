@@ -6,16 +6,19 @@ function getComputerChoice(){
     return choice;
 }
 function getPlayerChoice(){
-    var PlayerChoice;
-    const buttons=document.querySelectorAll('.button1');
-    buttons.forEach(button=>{
+    return new Promise((resolve)=>{
+        let PlayerChoice;
+        const buttons=document.querySelectorAll('.button1');
+        buttons.forEach(button=>{
         button.addEventListener('click',()=>{
-            PlayerChoice=button.getAttribute('data-option')
-            console.log(playRound(PlayerChoice,getComputerChoice()));
+            PlayerChoice=button.getAttribute('data-option');
+            resolve(PlayerChoice);
         });
     });
-
+    });
+    
 }
+
 function playRound(PlayerChoice,ComputerChoice){
     switch(PlayerChoice){
         case CHOICES[0]:
@@ -38,11 +41,23 @@ function playRound(PlayerChoice,ComputerChoice){
     }
 }
 function game(){
-    let scorePlayer=0;
-    let scoreComputer=0;
-    let winner;
-
-
+    getPlayerChoice().then((message)=>{
+        //console.log(playRound(message,getComputerChoice()));
+        const span=document.querySelector('#result1');
+        span.innerHTML=playRound(message,getComputerChoice());
+    });
 }
-getPlayerChoice();
+
+
+
+const buttons=document.querySelectorAll('.button1');
+buttons.forEach((button)=>{
+    button.addEventListener('click',game);
+});
+
+
+
+
+
+
 
